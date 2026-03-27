@@ -1,0 +1,41 @@
+{
+  "ticker": "MSFT",
+  "raw_rows": 2765,
+  "clean_rows": 2731,
+  "dropped_rows": 34,
+  "train_rows": 2184,
+  "test_rows": 547,
+  "split_ratio": 0.8,
+  "split_date": "2023-10-24",
+  "feature_columns": [
+    "Open",
+    "High",
+    "Low",
+    "Close",
+    "Adj Close",
+    "Volume",
+    "RSI_14",
+    "MACD",
+    "MACD_SIGNAL",
+    "MACD_DIFF",
+    "BB_MAVG",
+    "BB_HIGH",
+    "BB_LOW"
+  ],
+  "target_column": "Target_Close_Next",
+  "nan_counts_before_dropna": {
+    "MACD_DIFF": 33,
+    "MACD_SIGNAL": 33,
+    "MACD": 25,
+    "BB_MAVG": 19,
+    "BB_LOW": 19,
+    "BB_HIGH": 19,
+    "RSI_14": 13,
+    "Target_Close_Next": 1
+  },
+  "academic_red_lines": [
+    "Use dropna() after technical indicator calculation. No zero fill, ffill, or bfill.",
+    "Split by time order before scaling.",
+    "Fit MinMaxScaler on the training set only, then transform the test set."
+  ]
+}

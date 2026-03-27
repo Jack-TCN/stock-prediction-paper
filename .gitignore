@@ -1,0 +1,30 @@
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Notebooks
+.ipynb_checkpoints/
+
+# Local environments
+.venv/
+venv/
+env/
+.env
+
+# Archived / temporary outputs
+archive/
+*.log
+
+# Generated experiment runs
+training_runs/
+ultimate_training_runs/
+grid_search_runs/
+results/training_runs/
+
+# Generated model artifacts
+*.pt
+
+# Generated tensors
+data/tensors/

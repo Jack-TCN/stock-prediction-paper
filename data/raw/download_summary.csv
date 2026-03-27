@@ -1,0 +1,4 @@
+﻿ticker,rows,start,end,missing_values,output
+AAPL,2765,2015-01-02,2025-12-30,0,data/raw/AAPL.csv
+MSFT,2765,2015-01-02,2025-12-30,0,data/raw/MSFT.csv
+TSLA,2765,2015-01-02,2025-12-30,0,data/raw/TSLA.csv

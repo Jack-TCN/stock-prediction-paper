@@ -1,0 +1,21 @@
+{
+  "project_name": "stock_prediction_paper",
+  "topic": "LSTM与GRU在股票价格预测中的对比研究：技术指标融合与Dropout正则化分析",
+  "server_rule": "conda activate paper_env",
+  "stocks": ["AAPL", "MSFT", "TSLA"],
+  "feature_sets": {
+    "baseline": ["Open", "High", "Low", "Close", "Volume"],
+    "proposed": ["Open", "High", "Low", "Close", "Volume", "RSI_14", "MACD", "MACD_SIGNAL", "MACD_DIFF", "BB_MAVG", "BB_HIGH", "BB_LOW"]
+  },
+  "models": ["lstm", "gru"],
+  "core_window_sizes": [20, 60, 100],
+  "default_hidden_size": 64,
+  "default_dropout": 0.2,
+  "default_optimizer": "Adam",
+  "default_loss": "MSELoss",
+  "default_metrics": ["RMSE", "MAE", "MAPE"],
+  "notes": [
+    "这个文件是给人看的项目默认配置总表，不是所有脚本都会直接读取它。",
+    "单次运行的真正配置会保存到每个实验子文件夹里的 config.json。"
+  ]
+}
