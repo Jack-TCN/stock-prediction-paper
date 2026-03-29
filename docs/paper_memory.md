@@ -1,8 +1,19 @@
-﻿# Paper Memory
+# Paper Memory
 
 ## Fixed Topic
 
 `LSTM与GRU在股票价格预测中的对比研究：技术指标融合与Dropout正则化分析`
+
+## User Profile And Working Style
+
+- 用户是学生，这是第一次较完整地推进一篇英文论文
+- 当前目标不是冲强刊，而是先做出一篇结构完整、实验可信、可以向老师请教和尝试投稿的稿子
+- 用户不喜欢过度学术黑话、过多空泛框架和文档泛滥
+- 解释时应优先给出“为什么这么做、现在做到哪一步、下一步该干什么”
+- 任何影响主线理解的修改，都必须同步更新：
+  - `docs/context_anchor.md`
+  - `docs/paper_memory.md`
+  - `docs/path_map.md`
 
 ## Fixed Research Questions
 
@@ -118,6 +129,11 @@
 - 写作时要坚持更严谨的表述：
   - `RSI` 和 `Bollinger Bands` 是主要驱动
   - `MACD` 是互补性、条件性的贡献
+- 结果解释红线：
+  - `Table 1` 是“每个 stock × combo 各自 validation-best”的主结果表
+  - `Table 2` 是“每只股票先固定一套 stock-level validation-best reference configuration，再做特征消融”的机制表
+  - 因此，`Table 2` 中的 `Proposed (All)` 不应该被解释为 `Table 1` 中对应 `Proposed` 行的数值复刻
+  - 论文正文里还需要更直白地补一句：`Table 2` 是在单独的 ablation retraining protocol 下生成的，因此与 `Table 1` 出现小幅数值差异反映的是实验上下文不同，而不是结果矛盾
 
 ## Grid Search Result Snapshot
 
@@ -210,4 +226,3 @@
   - `Stock_Price_Forecasting_LSTM_GRU_Technical_Indicators_zh.md`
 - 根目录英文总稿：
   - `Stock_Price_Forecasting_LSTM_GRU_Technical_Indicators.md`
-

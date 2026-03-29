@@ -1,4 +1,4 @@
-﻿# Context Anchor
+# Context Anchor
 
 ## 这份文件的作用
 
@@ -24,6 +24,14 @@
 
 `LSTM与GRU在股票价格预测中的对比研究：技术指标融合与Dropout正则化分析`
 
+## 当前用户画像与交流偏好
+
+- 用户是学生
+- 这是第一次系统写论文，机器学习、金融和投稿经验都有限
+- 更需要“导师式、一步一步、不要太空泛”的支持
+- 回答应尽量直接、少套话、少黑话，必要时把术语翻成白话
+- 只要主线理解发生变化，就必须同步更新主接管文件，避免新聊天接不上
+
 ## 当前固定研究问题
 
 1. `LSTM` 和 `GRU` 哪个更好
@@ -38,6 +46,13 @@
 - [grid_search_runs](C:/Users/27476/Desktop/论文/stock_prediction_paper/_local/runs/grid_search_runs)
 - [grid_search_results.csv](C:/Users/27476/Desktop/论文/stock_prediction_paper/grid_search_results.csv)
 - [ablation_results.csv](C:/Users/27476/Desktop/论文/stock_prediction_paper/ablation_results.csv)
+
+## 当前最重要的结果口径提醒
+
+- `Table 1` 与 `Table 2` 不是同一种实验协议
+- `Table 1`：每个 `stock × combo` 各自按验证集选最优
+- `Table 2`：每只股票先固定一套股票级全局验证集最优配置，再比较 `proposed_all / no_rsi / no_macd / no_bollinger`
+- 所以 `Table 2` 的 `Proposed (All)` 是消融协议内部参考值，不是 `Table 1` 中 `Proposed` 行的重复引用
 
 ## 公开仓库规则
 
@@ -89,4 +104,3 @@
 2. 再看 `paper_memory.md`
 3. 需要找文件时再看 `path_map.md`
 4. 只有在需要追溯历史过程时，才去看 `_local/archive/docs_reference/` 里的归档说明文档
-

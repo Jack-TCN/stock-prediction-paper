@@ -1,4 +1,4 @@
-﻿# Path Map
+# Path Map
 
 ## 你以后只要按这张地图放文件就行
 
@@ -19,6 +19,11 @@
 - `path_map.md`：哪里是主线、哪里是归档
 
 这 3 个文件之外，其它 md 都默认是补充材料。
+
+新聊天还要额外记住两件事：
+
+- 用户是学生，第一次系统写论文，需要更像导师而不是像审稿系统的引导
+- 回答要尽量直接、少黑话、少冗余，先说明“现在做什么”和“为什么这样做”
 
 这个项目以后按 5 个区来理解：
 
@@ -143,6 +148,10 @@
 - 这 3 个总稿文件当前属于本地私有论文材料
 - 公开 GitHub 仓库不会上传它们
 - GitHub 上的 README 现在已明确区分“公开代码版仓库”和“私有论文主稿”
+- 结果解释时还要额外记住：
+  - `Table 1` 是“每个 stock × combo 各自 validation-best”的主结果表
+  - `Table 2` 是“每只股票先固定一套 stock-level validation-best reference configuration，再做特征消融”的机制表
+  - 两张表不能按“同名行应逐项数值相等”的方式理解
 
 这里还有一个命名硬规则：
 
@@ -311,4 +320,3 @@
 - [paper_conclusion_en.md](C:/Users/27476/Desktop/论文/stock_prediction_paper/docs/paper_conclusion_en.md)
 - [Stock_Price_Forecasting_LSTM_GRU_Technical_Indicators.md](C:/Users/27476/Desktop/论文/stock_prediction_paper/Stock_Price_Forecasting_LSTM_GRU_Technical_Indicators.md)
 - [Stock_Price_Forecasting_LSTM_GRU_Technical_Indicators.tex](C:/Users/27476/Desktop/论文/stock_prediction_paper/Stock_Price_Forecasting_LSTM_GRU_Technical_Indicators.tex)
-
