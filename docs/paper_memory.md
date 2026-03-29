@@ -80,6 +80,7 @@
   - `Stock_Price_Forecasting_LSTM_GRU_Technical_Indicators_zh.md`
   - `Stock_Price_Forecasting_LSTM_GRU_Technical_Indicators.md`
   - `Stock_Price_Forecasting_LSTM_GRU_Technical_Indicators.tex`
+- 但当前公开 GitHub 仓库不会上传上述完整论文主稿；公开仓库仅保留代码、图、结果总表和必要说明文档
 - 审稿修订阶段新增：
   - `scripts/run_ablation_study.py`
   - `ablation_results.csv`

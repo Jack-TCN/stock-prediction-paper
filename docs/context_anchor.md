@@ -39,6 +39,11 @@
 - [grid_search_results.csv](C:/Users/27476/Desktop/论文/stock_prediction_paper/grid_search_results.csv)
 - [ablation_results.csv](C:/Users/27476/Desktop/论文/stock_prediction_paper/ablation_results.csv)
 
+## 公开仓库规则
+
+- 当前公开 GitHub 仓库只保留代码、图、结果总表和少量说明文档
+- 论文完整主稿（`.md` / `.tex`）当前仍按私有材料处理，不放入公开 GitHub
+
 ## 当前最重要的说明文件
 
 - [paper_memory.md](C:/Users/27476/Desktop/论文/stock_prediction_paper/docs/paper_memory.md)

@@ -1,48 +1,44 @@
 # Stock Prediction Paper
 
-This repository contains a student research project on stock price forecasting with `LSTM` and `GRU`, with a particular focus on technical-indicator fusion, lag mitigation under extreme market conditions, and leakage-free experimental design.
+[中文说明](README.zh-CN.md)
 
-## Main Manuscripts
+This repository contains the **code-side public workspace** of a student research project on stock price forecasting with `LSTM` and `GRU`, with a particular focus on technical-indicator fusion, lag mitigation under extreme market conditions, and leakage-free experimental design.
 
-The project root keeps the three current master manuscripts:
+## Public Scope of This Repository
 
-- [Stock_Price_Forecasting_LSTM_GRU_Technical_Indicators_zh.md](C:/Users/27476/Desktop/论文/stock_prediction_paper/Stock_Price_Forecasting_LSTM_GRU_Technical_Indicators_zh.md)
-- [Stock_Price_Forecasting_LSTM_GRU_Technical_Indicators.md](C:/Users/27476/Desktop/论文/stock_prediction_paper/Stock_Price_Forecasting_LSTM_GRU_Technical_Indicators.md)
-- [Stock_Price_Forecasting_LSTM_GRU_Technical_Indicators.tex](C:/Users/27476/Desktop/论文/stock_prediction_paper/Stock_Price_Forecasting_LSTM_GRU_Technical_Indicators.tex)
+This GitHub repository is intentionally limited to:
 
-These are the primary files for final review, PDF generation, and submission preparation.
+- experiment scripts
+- data-processing pipelines
+- figure-generation code
+- result summary tables
+- lightweight project documentation
 
-## New Chat Handoff
-
-If a new chat needs to take over the project, read these three files first:
-
-- [context_anchor.md](C:/Users/27476/Desktop/论文/stock_prediction_paper/docs/context_anchor.md)
-- [paper_memory.md](C:/Users/27476/Desktop/论文/stock_prediction_paper/docs/paper_memory.md)
-- [path_map.md](C:/Users/27476/Desktop/论文/stock_prediction_paper/docs/path_map.md)
+The **full manuscript drafts** (`.md` / `.tex`) are intentionally kept out of the public repository before submission in order to reduce pre-submission disclosure risk.
 
 ## Repository Structure
 
-- [configs](C:/Users/27476/Desktop/论文/stock_prediction_paper/configs): project-level configuration notes
-- [data](C:/Users/27476/Desktop/论文/stock_prediction_paper/data): raw and processed datasets
-- [docs](C:/Users/27476/Desktop/论文/stock_prediction_paper/docs): active chapter drafts and core project memory
-- [figures](C:/Users/27476/Desktop/论文/stock_prediction_paper/figures): publication figures used in the paper
-- [scripts](C:/Users/27476/Desktop/论文/stock_prediction_paper/scripts): data processing, figure generation, and ablation scripts
-- [train.py](C:/Users/27476/Desktop/论文/stock_prediction_paper/train.py): single-experiment training engine
-- [run_grid_search.py](C:/Users/27476/Desktop/论文/stock_prediction_paper/run_grid_search.py): grid-search entry point
-- [run_ultimate_experiments.py](C:/Users/27476/Desktop/论文/stock_prediction_paper/run_ultimate_experiments.py): window-sensitivity experiment runner
-- [run_all_experiments.py](C:/Users/27476/Desktop/论文/stock_prediction_paper/run_all_experiments.py): earlier batch baseline runner
+- `configs/`: project-level configuration notes
+- `data/`: raw and processed datasets
+- `docs/`: lightweight active project notes for repo orientation
+- `figures/`: publication figures used in the study
+- `scripts/`: data processing, figure generation, and ablation scripts
+- `train.py`: single-experiment training engine
+- `run_grid_search.py`: grid-search entry point
+- `run_ultimate_experiments.py`: window-sensitivity experiment runner
+- `run_all_experiments.py`: earlier batch baseline runner
 
-## Key Result Files
+## Key Public Result Files
 
-- [grid_search_results.csv](C:/Users/27476/Desktop/论文/stock_prediction_paper/grid_search_results.csv)
-- [ultimate_results.csv](C:/Users/27476/Desktop/论文/stock_prediction_paper/ultimate_results.csv)
-- [ablation_results.csv](C:/Users/27476/Desktop/论文/stock_prediction_paper/ablation_results.csv)
+- `grid_search_results.csv`
+- `ultimate_results.csv`
+- `ablation_results.csv`
 
-## Local-Only Workspace
+## Private Local Workspace
 
-The folder below is intentionally excluded from GitHub:
+The following folder is intentionally excluded from GitHub:
 
-- [_local](C:/Users/27476/Desktop/论文/stock_prediction_paper/_local)
+- `_local/`
 
 It stores:
 
@@ -50,6 +46,7 @@ It stores:
 - logs
 - archived drafts
 - temporary review materials
+- private manuscript support files
 
 ## Environment
 
@@ -60,7 +57,7 @@ conda activate paper_env
 pip install -r requirements.txt
 ```
 
-Note:
+Notes:
 
-- On the server, commands are expected to run under `paper_env`.
-- In some `zsh` shells, `conda` may require manual shell initialization before activation.
+- on the server, commands are expected to run under `paper_env`
+- in some `zsh` shells, `conda` may require manual shell initialization before activation
