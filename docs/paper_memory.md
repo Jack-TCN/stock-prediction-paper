@@ -1,4 +1,4 @@
-# Paper Memory
+﻿# Paper Memory
 
 ## Fixed Topic
 
@@ -19,6 +19,10 @@
 - 论文写作时要明确说明滑动窗口长度会影响模型对时间依赖的捕捉能力
 - 论文结果部分需要单独报告不同窗口下的 `RMSE`、`MAE`、`MAPE`
 - 论文讨论部分需要解释为什么某些股票更适合短窗口或长窗口
+- 最终整合完整 Markdown 终稿时，要在 `Results` 章节用 Markdown 图片语法插入：
+  - `./figures/hyperparameter_sensitivity.png`
+  - `./figures/tsla_v_reversal_lag_comparison.png`
+- 同时要把“Results 核心结果总表”放在结果章节的合适位置，而不是只散落在说明文档里
 
 ## Fixed Experimental Rules
 
@@ -44,11 +48,102 @@
 ## Server Rule
 
 - 以后在 Ubuntu 服务器上执行任何论文相关命令前，先运行：`conda activate paper_env`
+- 当前服务器硬件信息单独记录在：`_local/archive/docs_reference/training_environment.md`
+- 论文写作时需要在实验环境或实现细节部分简洁交代训练设备
+- 注意：服务器某些 `zsh` 终端里 `conda` 可能未初始化，出现 `command not found: conda` 时要先处理 shell 初始化
+
+## Current Directory Rule
+
+- 为避开 Windows 下中文路径导致的 `pandoc/python` 编码问题，已建立一个英文入口路径：
+  - `C:\Users\27476\Desktop\article\stock_prediction_paper`
+- 该路径是指向当前项目根目录的 junction，后续做 `docx/pdf` 导出或其他依赖外部工具的任务时，优先走这个英文路径
+- 根目录只保留适合上传 GitHub 的主线文件
+- 本地私有训练资产、日志、旧结果统一放在 `_local/`
+- `docs/paper_*.md` 只保留“正式论文章节草稿”，不能再混放备忘录或工作笔记
+- 分析备忘、阶段性解释、被正式章节替代的旧内容，一律放到：
+  - `_local/archive/docs_history/`
+- 低频说明文档统一放到：
+  - `_local/archive/docs_reference/`
+- 命名规则固定为：
+  - 正式章节：`paper_introduction.md`、`paper_methodology.md`、`paper_related_work.md`、`paper_results.md`、`paper_conclusion.md`
+  - 工作备忘：`*_working_notes.md`
+- 已发生过一次同名覆盖错误：旧版 `paper_results.md` 工作备忘被正式章节覆盖
+- 该错误已修复，旧内容恢复到：
+  - `_local/archive/docs_history/paper_results_working_notes.md`
+- 当前最重要的详细运行目录是：
+  - `_local/runs/grid_search_runs/`
+  - `_local/runs/ultimate_training_runs/`
+- 当前最重要的正式总表仍保留在根目录：
+  - `grid_search_results.csv`
+  - `ultimate_results.csv`
+- 当前根目录下的正式总稿产物包括：
+  - `Stock_Price_Forecasting_LSTM_GRU_Technical_Indicators_zh.md`
+  - `Stock_Price_Forecasting_LSTM_GRU_Technical_Indicators.md`
+  - `Stock_Price_Forecasting_LSTM_GRU_Technical_Indicators.tex`
+- 审稿修订阶段新增：
+  - `scripts/run_ablation_study.py`
+  - `ablation_results.csv`
+- 英文总稿中的图表引用已统一为：
+  - Markdown：`Fig. 1`、`Fig. 2`、`Table 1`
+  - LaTeX：`Fig.~\ref{...}`、`Table~\ref{...}`
+- 进一步修订后，英文总稿已新增：
+  - `4.4 Ablation Study on Technical Indicators`
+  - `Table 2: Ablation Study Results`
+  - Discussion 末尾的“轻量模型 + 金融先验 + 严格防泄露验证”的防守性段落
+  - Conclusion / Future Work 中关于中国 A 股、欧洲市场与更多资产类别验证的扩展方向
 
 ## Current Important Result
 
-- 正式服务器结果中，3 只股票当前最佳组合均为 `Proposed + LSTM`
-- 这条结论后续要写进 Results 和 Discussion
+- 现在论文最重要的结果以 `grid_search_results.csv` 为准，不再以前一版 `ultimate_results.csv` 的结论为准
+- 当前按“验证集最优”选配置时，每只股票的最佳组合分别为：
+  - `AAPL`：`baseline + LSTM + window=60 + hidden=128 + lr=0.001 + dropout=0.2`
+  - `MSFT`：`proposed + GRU + window=20 + hidden=128 + lr=0.001 + dropout=0.0`
+  - `TSLA`：`proposed + GRU + window=60 + hidden=128 + lr=0.001 + dropout=0.2`
+- 论文里必须坚持：验证集选配置，测试集只报告最终结果
+
+## Ablation Study Snapshot
+
+- `ablation_results.csv` 已跑完
+- 范围：`AAPL`、`MSFT`、`TSLA`
+- 特征组：
+  - `proposed_all`
+  - `no_rsi`
+  - `no_macd`
+  - `no_bollinger`
+- 当前最重要的机制性结论：
+  - `RSI` 与 `Bollinger Bands` 对缓解滞后效应的贡献最强
+  - 在 `MSFT` 与 `TSLA` 上，移除 `RSI` 或 `Bollinger Bands` 会导致测试误差显著恶化
+  - `MACD` 的贡献更偏资产依赖，不适合写成“所有股票上都不可替代”
+- 写作时要坚持更严谨的表述：
+  - `RSI` 和 `Bollinger Bands` 是主要驱动
+  - `MACD` 是互补性、条件性的贡献
+
+## Grid Search Result Snapshot
+
+- `run_grid_search.py` 已完整跑完，`432 / 432` 组均已完成
+- 运行设备：`cuda:0`
+- 总耗时约 `7 小时 8 分`
+- 大部分组合都在 `500 epochs` 之前触发早停：
+  - `395` 组提前停止
+  - `37` 组跑满 `500`
+
+按“验证集最优”选择时，每只股票当前最佳配置为：
+
+- `AAPL`：`baseline + LSTM + window=60 + hidden=128 + lr=0.001 + dropout=0.2`
+- `MSFT`：`proposed + GRU + window=20 + hidden=128 + lr=0.001 + dropout=0.0`
+- `TSLA`：`proposed + GRU + window=60 + hidden=128 + lr=0.001 + dropout=0.2`
+
+相对 `ultimate_results.csv` 中的最佳配置，这次网格搜索对应测试集表现提升为：
+
+- `AAPL`：`RMSE` 下降约 `7.71`
+- `MSFT`：`RMSE` 下降约 `113.57`
+- `TSLA`：`RMSE` 下降约 `1.07`
+
+重要写作提醒：
+
+- 论文里正式选“最优超参数”时，必须按验证集选择
+- 不能按测试集挑最优，否则会有测试集泄露风险
+- 当前 `MSFT` 和 `TSLA` 上，“验证集最优”和“测试集最优”不是同一组配置，这一点后面写论文时必须说明清楚
 
 ## Grid Search Plan
 
@@ -59,11 +154,59 @@
   - 比较不同 `hidden_size / learning_rate / dropout` 的影响
 - 正式写论文时，超参数最优组合必须基于验证集表现选择
 
-## Beginner Note
+## Minimal Reading Rule
 
-- 如果后面看文件觉得混乱，先看：`docs/project_structure_guide.md`
-- 如果后面担心上下文太长、想先快速进入状态，先看：`docs/context_anchor.md`
-- 如果想按“我问了什么 / 做了什么 / 为什么这样做”来回顾，先看：`docs/novice_experiment_flow.md`
-- 如果想搞清楚哪些文件该保留、哪些只是测试残留，先看：`docs/file_cleanup_plan.md`
-- 如果想搞清楚每类文件应该放在哪条路径，先看：`docs/path_map.md`
-- 如果别人问你“有没有 config”，先看：`configs/README.md`
+- 以后优先只看：
+  - `docs/context_anchor.md`
+  - `docs/paper_memory.md`
+  - `docs/path_map.md`
+- 低频说明、历史过程、清理规则、GPU 优化备注等内容，统一放在：
+  - `_local/archive/docs_reference/`
+- 正式投稿与改稿时，应优先以根目录总稿为准，而不是分章节稿
+
+## New Chat Rule
+
+- 以后如果你换一个新聊天页面，不要试图让新页面读完所有 md
+- 直接让它先读这 3 个文件：
+  - `docs/context_anchor.md`
+  - `docs/paper_memory.md`
+  - `docs/path_map.md`
+- 这 3 个文件是当前项目的唯一可信入口
+- 其他 md 一律视为补充材料，不作为新聊天的首轮必读内容
+- 如果后面还觉得 docs 太散，下一轮可以继续把低频说明文档并入这 3 个主文件
+
+## Current Manuscript Files
+
+- 正式摘要与标题：
+  - `docs/paper_abstract.md`
+- 英文摘要：
+  - `docs/paper_abstract_en.md`
+- 正式引言：
+  - `docs/paper_introduction.md`
+- 英文引言：
+  - `docs/paper_introduction_en.md`
+- 正式文献综述：
+  - `docs/paper_related_work.md`
+- 英文文献综述：
+  - `docs/paper_related_work_en.md`
+- 正式方法：
+  - `docs/paper_methodology.md`
+- 英文方法：
+  - `docs/paper_methodology_en.md`
+- 正式结果与讨论：
+  - `docs/paper_results.md`
+- 英文结果与讨论：
+  - `docs/paper_results_en.md`
+- 正式结论：
+  - `docs/paper_conclusion.md`
+- 英文结论：
+  - `docs/paper_conclusion_en.md`
+- 正式参考文献表：
+  - `docs/paper_references.md`
+- 英文参考文献表：
+  - `docs/paper_references_en.md`
+- 根目录总稿：
+  - `Stock_Price_Forecasting_LSTM_GRU_Technical_Indicators_zh.md`
+- 根目录英文总稿：
+  - `Stock_Price_Forecasting_LSTM_GRU_Technical_Indicators.md`
+

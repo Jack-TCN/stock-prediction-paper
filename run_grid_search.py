@@ -33,7 +33,7 @@ DEFAULT_DROPOUTS = [0.0, 0.2, 0.4]
 DEFAULT_BATCH_SIZE = 32
 DEFAULT_EPOCHS = 500
 DEFAULT_PATIENCE = 20
-DEFAULT_OUTPUT_ROOT_DIR = "grid_search_runs"
+DEFAULT_OUTPUT_ROOT_DIR = "_local/runs/grid_search_runs"
 DEFAULT_RESULTS_FILE = "grid_search_results.csv"
 
 UNIQUE_KEY_FIELDS = [
@@ -181,7 +181,8 @@ def main() -> None:
             "seed": args.seed,
         },
     }
-    metadata_path = project_root / "grid_search_metadata.json"
+    metadata_path = project_root / "_local" / "logs" / "grid_search_metadata.json"
+    metadata_path.parent.mkdir(parents=True, exist_ok=True)
     metadata_path.write_text(json.dumps(metadata, indent=2, ensure_ascii=False), encoding="utf-8")
 
     print(f"Total combinations: {len(all_combos)}")

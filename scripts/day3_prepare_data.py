@@ -349,12 +349,14 @@ def write_day3_report(project_root: Path, metadata_list: list[dict]) -> None:
             f"{item['train_rows']} | {item['test_rows']} | {item['split_date']} |"
         )
 
-    report_path = docs_dir / "day3_report.md"
+    report_path = project_root / "_local" / "archive" / "docs_history" / "day3_report.md"
+    report_path.parent.mkdir(parents=True, exist_ok=True)
     report_path.write_text("\n".join(lines), encoding="utf-8")
 
 
 def update_progress_log(project_root: Path, metadata_list: list[dict]) -> None:
-    log_path = project_root / "docs" / "progress_log.md"
+    log_path = project_root / "_local" / "archive" / "docs_reference" / "progress_log.md"
+    log_path.parent.mkdir(parents=True, exist_ok=True)
     lines = [
         "# Project Progress Log",
         "",

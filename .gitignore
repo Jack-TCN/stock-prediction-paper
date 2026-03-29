@@ -13,15 +13,16 @@ venv/
 env/
 .env
 
-# Archived / temporary outputs
-archive/
+# Local-only workspace
+_local/
 *.log
+review_target*.pdf
+tmp_pdf_review*/
 
-# Generated experiment runs
-training_runs/
-ultimate_training_runs/
-grid_search_runs/
-results/training_runs/
+# Manuscript drafts kept local before submission
+Stock_Price_Forecasting_LSTM_GRU_Technical_Indicators*.md
+Stock_Price_Forecasting_LSTM_GRU_Technical_Indicators*.tex
+docs/paper_*.md
 
 # Generated model artifacts
 *.pt

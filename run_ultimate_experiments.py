@@ -29,7 +29,7 @@ FEATURE_SETS = ["baseline", "proposed"]
 MODELS = ["lstm", "gru"]
 ULTIMATE_EPOCHS = 500
 ULTIMATE_PATIENCE = 20
-ULTIMATE_OUTPUT_ROOT_DIR = "ultimate_training_runs"
+ULTIMATE_OUTPUT_ROOT_DIR = "_local/runs/ultimate_training_runs"
 
 
 def parse_args() -> argparse.Namespace:
@@ -135,7 +135,8 @@ def main() -> None:
     ].sort_values(by=["window_size", "ticker", "feature_set", "model_type"]).reset_index(drop=True)
 
     final_csv_path = project_root / f"{args.results_prefix}_results.csv"
-    final_json_path = project_root / f"{args.results_prefix}_results.json"
+    final_json_path = project_root / "_local" / "logs" / f"{args.results_prefix}_results.json"
+    final_json_path.parent.mkdir(parents=True, exist_ok=True)
     final_df.to_csv(final_csv_path, index=False, encoding="utf-8-sig")
 
     batch_summary = {

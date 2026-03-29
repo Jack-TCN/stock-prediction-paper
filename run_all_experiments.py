@@ -115,7 +115,7 @@ def main() -> None:
         ]
     ].sort_values(by=["ticker", "feature_set", "model_type"]).reset_index(drop=True)
 
-    results_dir = project_root / "results"
+    results_dir = project_root / "_local" / "results"
     results_dir.mkdir(parents=True, exist_ok=True)
     final_csv_path = results_dir / "final_results.csv"
     final_json_path = results_dir / "final_results.json"

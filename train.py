@@ -23,7 +23,7 @@ DEFAULT_SEED = 42
 DEFAULT_PATIENCE = 10
 DEFAULT_VAL_RATIO = 0.1
 DEFAULT_MIN_DELTA = 0.0
-DEFAULT_OUTPUT_ROOT_DIR = "training_runs"
+DEFAULT_OUTPUT_ROOT_DIR = "_local/runs/training_runs"
 
 
 def set_seed(seed: int) -> None:
